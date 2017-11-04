@@ -12,7 +12,6 @@ const Chart = (props) => {
         <Bar
           data={chartData}
           options={{
-            Display: false,
             maintainAspectRatio: false,
           }}
         />
