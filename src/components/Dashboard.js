@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import { connect } from 'react-redux';
 import * as dataAction from '../actions/dataAction';
 import Chart from './Chart';
@@ -9,9 +8,14 @@ class Dashboard extends Component {
     super(props);
   }
 
+  setIntervalDataFetch(func, interval, param) {
+    func(param);
+    return setInterval(() => func(param), interval);
+  }
+
   componentDidMount() {
     window.scrollTo(0,0);
-    this.props.dispatch(dataAction.getExchangeRates());
+    this.setIntervalDataFetch(this.props.dispatch, 900000, dataAction.getExchangeRates())
   }
 
   // Function to get current time
@@ -19,7 +23,7 @@ class Dashboard extends Component {
   getCurrentTime() {
       let now = new Date();
       let date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
-      let time = [ now.getHours(), now.getMinutes() ];
+      let time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
 
       let suffix = ( time[0] < 12 ) ? "AM" : "PM";
 
@@ -79,45 +83,13 @@ const mapStateToProps = (state) => {
   const {
     USD,
     KRW,
-    JPY,
-    EUR,
-    HKD,
-    AUD,
-    GBP,
   } = state.dataReducer;
 
   return {
     USD,
     KRW,
-    JPY,
-    EUR,
-    HKD,
-    AUD,
-    GBP,
   }
 }
-
-// const mapStateToProps = (state) => {
-//   const {
-//     businessId,
-//     businessName,
-//     photoUri,
-//     rating,
-//     telephone,
-//   } = state.business;
-//
-//   const { reviews } = state;
-//   const thumbnails = _.map(Object.values(reviews));
-//
-//   return {
-//     businessId,
-//     businessName,
-//     businessImage: photoUri,
-//     rating,
-//     telephone,
-//     thumbnails,
-//   };
-// };
 
 const mapDispatchToProps = (dispatch) => {
   return {
