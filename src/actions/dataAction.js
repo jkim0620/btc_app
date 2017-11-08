@@ -1,19 +1,19 @@
 import axios from 'axios';
 
-export const getExchangeRates = () => {
+const getExchangeRates = () => {
   return (dispatch) => {
     axios
     .get('https://blockchain.info/ticker')
-    .then((response) => {
+    .then(response => {
       dispatch({
         type: 'GET_EXCHANGE_RATES_SUCCESS',
         payload: response.data
-      });
+      })
     })
-    .catch(() => {
-      dispatch({
-        type: 'GET_EXCHANGE_RATES_ERROR',
-      });
+    .catch((err) => {
+      console.log(err);
     });
   };
 };
+
+export default getExchangeRates;

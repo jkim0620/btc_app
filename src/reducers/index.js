@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import dataReducer from "./dataReducer";
+import exchangeRates from './dataReducer';
 
 export default combineReducers({
-    dataReducer: dataReducer
+    exchangeRates: exchangeRates
 });

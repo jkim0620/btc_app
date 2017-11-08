@@ -1,0 +1,47 @@
+/*
+=====================================
+ Mixin for Button
+=====================================
+*/
+
+@mixin button-style($width, $height, $border-radius, $bg-color) {
+  width: $width;
+  height: $height;
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  -ms-border-radius: $border-radius;
+  -o-border-radius: $border-radius;
+  border-radius: $border-radius;
+  border: none;
+  text-align: center;
+  background: $bg-color;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+/*
+=====================================
+ Mixin for Flexbox
+=====================================
+*/
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($val) {
+  -webkit-box-flex: $val;
+  -moz-box-flex: $val;
+  -webkit-flex: $val;
+  -ms-flex: $val;
+  flex: $val;
+}

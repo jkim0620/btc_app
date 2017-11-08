@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as dataAction from '../actions/dataAction';
+import getExchangeRates from '../actions/dataAction';
 import Chart from './Chart';
 
 class Dashboard extends Component {
@@ -8,19 +8,28 @@ class Dashboard extends Component {
     super(props);
   }
 
-  setIntervalDataFetch(func, interval, param) {
+  setIntervalDataFetch(func, param, interval) {
     func(param);
     return setInterval(() => func(param), interval);
   }
 
   componentDidMount() {
     window.scrollTo(0,0);
-    this.setIntervalDataFetch(this.props.dispatch, 900000, dataAction.getExchangeRates())
+    // func: this.props.dispatch -> a function that dispatches the action
+    // parameter: getExchangeRates() -> an action, which is an axios call that fetches data from the api, is passed in as a parameter for the dispatch Function
+    // interval: 900000 -> Update data every 15min
+    this.setIntervalDataFetch(this.props.dispatch, getExchangeRates(), 900000);
   }
 
-  // Function to get current time
-  // Reference code: https://gist.github.com/hurjas/2660489
-  getCurrentTime() {
+  // saveDataToLocalStorage() {
+  //   store.subscribe(() => {
+  //     localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+  //   })
+  // }
+
+    // Function to get current time
+    // Reference code: https://gist.github.com/hurjas/2660489
+    getCurrentTime() {
       let now = new Date();
       let date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
       let time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
@@ -36,44 +45,54 @@ class Dashboard extends Component {
           time[i] = "0" + time[i];
         }
       }
-
       return `${time.join(":")} ${suffix} ${date.join("/")}`;
-  }
+    }
 
   getChartData(data) {
     return (
       {
-        labels: [`Last Updated Rate ${this.getCurrentTime()} (${data.symbol} ${data.last})`, `Buy (${data.symbol} ${data.buy})`, `Sell (${data.symbol} ${data.sell})`],
+        labels: [`Most Recent Market Price`, `Buying Rate`, `Selling Rate`],
         datasets: [
           {
-            label:['Bitcoin Exchange Rates'],
+            label:['Most Recent Market Price'],
             data:[
               data.last,
-              data.buy,
-              data.sell,
             ],
             backgroundColor:[
               'rgba(255, 99, 132, 0.6)',
-              'blue',
-              'yellow',
-            ]
+            ],
           },
-        ]
+          {
+            label: ['Buying Rate'],
+            data: [data.buy],
+            backgroundColor: ['yellow']
+          },
+          {
+            label: ['Selling Rate'],
+            data: [data.sell],
+            backgroundColor: ['blue']
+          },
+        ],
       }
-    )
+    );
   }
 
   render() {
     return (
       <div>
-        blockchain
-        <br />
-        USD: {this.props.USD.symbol} {this.props.USD.last}
-        <br />
-        KRW: {this.props.KRW.symbol} {this.props.KRW.last}
-        <Chart
-        chartData={this.getChartData(this.props.USD)}
-        />
+        <header>
+          blockchain
+          <br />
+          USD: {this.props.USD.symbol} {this.props.USD.last}
+        </header>
+        <div className="chartContainer">
+          <Chart
+          chartData={this.getChartData(this.props.USD)}
+          />
+          <div>
+            Hello {`Last Updated Rate ${this.getCurrentTime()}`}
+          </div>
+        </div>
       </div>
     );
   }
@@ -82,12 +101,10 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   const {
     USD,
-    KRW,
-  } = state.dataReducer;
+  } = state.exchangeRates;
 
   return {
     USD,
-    KRW,
   }
 }
 
