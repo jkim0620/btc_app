@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Bar } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 
 const Chart = (props) => {
   const {
@@ -17,9 +17,9 @@ const Chart = (props) => {
   const chartOption = {
     elements: {
       rectangle: {
-        borderWidth: 2,
-        borderColor: 'rgb(0, 255, 0)',
-        borderSkipped: 'bottom'
+        borderWidth: 7,
+        borderColor: '#818e9b',
+        borderSkipped: 'top'
       },
     },
     title: {
@@ -39,13 +39,23 @@ const Chart = (props) => {
         fontSize: 13,
       },
     },
+    scales: {
+      xAxes: [{
+        display: true,
+        ticks: {
+          steps: 5,
+          stepValue: 10,
+        }
+      }]
+    },
     responsive: true,
     maintainAspectRatio: true,
   };
 
   return (
     <div className="chart">
-      <Bar
+      <HorizontalBar
+        fontFamily= 'Avenir'
         data={chartData}
         options={chartOption}
         defaults={defaults}

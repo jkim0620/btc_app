@@ -19,6 +19,8 @@ class Dashboard extends Component {
     // parameter: getExchangeRates() -> an action, which is an axios call that fetches data from the api, is passed in as a parameter for the dispatch Function
     // interval: 900000 -> Update data every 15min
     this.setIntervalDataFetch(this.props.dispatch, getExchangeRates(), 900000);
+    // const canvas = this.refs.bargraph.chart_instance;
+    // console.log(canvas);
   }
 
   // saveDataToLocalStorage() {
@@ -54,28 +56,27 @@ class Dashboard extends Component {
         labels: [`Most Recent Market Price`, `Buying Rate`, `Selling Rate`],
         datasets: [
           {
-            label:['Most Recent Market Price'],
-            data:[
-              data.last,
-            ],
-            backgroundColor:[
-              'rgba(255, 99, 132, 0.6)',
-            ],
+            label: ['Most Recent Market Price'],
+            data: [data.last],
+            backgroundColor: '#fff',
           },
           {
             label: ['Buying Rate'],
             data: [data.buy],
-            backgroundColor: ['yellow']
+            backgroundColor: '#3dd0ac',
           },
           {
             label: ['Selling Rate'],
             data: [data.sell],
-            backgroundColor: ['blue']
+            backgroundColor: '#f96913',
           },
         ],
       }
     );
   }
+
+  // #3dd0ac
+  // #15aec6
 
   render() {
     return (
