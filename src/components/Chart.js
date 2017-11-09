@@ -24,9 +24,9 @@ const Chart = (props) => {
     },
     title: {
       display: true,
-      text: 'Bitcoin Exchange Rates',
+      text: 'Get the latest Bitcoin Exchange Rates',
       fontFamily: 'Avenir',
-      fontSize: 20,
+      fontSize: 18,
       fontColor: '#fff',
     },
     legend: {

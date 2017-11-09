@@ -9,8 +9,11 @@ body {
   font-family: $primary-font-family, 'Helvetica', 'sans-serif';
   padding: 0;
   margin: 0;
-  // background: linear-gradient(180deg, #2c08c9, $deep-blue);
-  background: #34495e;
+  background: $deep-green-gray;
   width: 100%;
-  min-height: 100vh;
+}
+
+.accentText {
+  color: $red-orange;
+  font-size: 16px;
 }

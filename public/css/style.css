@@ -1,13 +1,3 @@
-/*
-=====================================
- Mixin for Button
-=====================================
-*/
-/*
-=====================================
- Mixin for Flexbox
-=====================================
-*/
 * {
   box-sizing: border-box; }
   *:focus {
@@ -18,17 +8,60 @@ body {
   padding: 0;
   margin: 0;
   background: #34495e;
-  width: 100%;
-  min-height: 100vh; }
+  width: 100%; }
+
+.accentText {
+  color: #d16545;
+  font-size: 16px; }
 
 header {
-  width: 100%;
-  text-align: center;
-  height: 200px; }
+  height: 70px;
+  background-color: #89F8EA;
+  margin-bottom: 20px;
+  padding: 20px 70px;
+  color: #34495e; }
+
+nav {
+  display: flex;
+  justify-content: space-between; }
+
+.logoBox {
+  flex: 1; }
+  .logoBox .logo {
+    margin: 0;
+    width: 90px;
+    border-bottom: #34495e 5px solid;
+    font-size: 18px;
+    font-weight: bold; }
+
+.dataBox {
+  flex: 1;
+  text-align: right; }
+  .dataBox .dataText {
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold; }
 
 .chartContainer {
   width: 70%;
   margin: 0 auto;
   font-family: "Avenir"; }
+
+.infoBox {
+  background-color: #8db7b5;
+  width: 300px;
+  margin: 50px 20px;
+  padding: 30px;
+  border-radius: 10px; }
+
+.infoList {
+  list-style: none;
+  margin: 0;
+  padding-left: 0; }
+  .infoList li {
+    font-weight: bold;
+    color: #232323;
+    margin-right: 20px;
+    margin-bottom: 10px; }
 
 /*# sourceMappingURL=style.css.map */

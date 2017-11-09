@@ -53,7 +53,7 @@ class Dashboard extends Component {
   getChartData(data) {
     return (
       {
-        labels: [`Most Recent Market Price`, `Buying Rate`, `Selling Rate`],
+        // labels: [`Most Recent Market Price`, `Buying Rate`, `Selling Rate`],
         datasets: [
           {
             label: ['Most Recent Market Price'],
@@ -63,35 +63,45 @@ class Dashboard extends Component {
           {
             label: ['Buying Rate'],
             data: [data.buy],
-            backgroundColor: '#3dd0ac',
+            backgroundColor: '#89F8EA',
           },
           {
             label: ['Selling Rate'],
             data: [data.sell],
-            backgroundColor: '#f96913',
+            backgroundColor: '#d16545',
           },
         ],
       }
     );
   }
 
-  // #3dd0ac
-  // #15aec6
-
   render() {
     return (
       <div>
         <header>
-          blockchain
-          <br />
-          USD: {this.props.USD.symbol} {this.props.USD.last}
+          <nav>
+            <div className="logoBox">
+              <p className="logo">blockchain</p>
+            </div>
+            <div className="dataBox">
+              <p className="dataText">
+                $ <span className="accentText">{this.props.USD.last}</span> USD
+                <br />
+                {`Last Updated: ${this.getCurrentTime()}`}
+              </p>
+            </div>
+          </nav>
         </header>
         <div className="chartContainer">
           <Chart
           chartData={this.getChartData(this.props.USD)}
           />
-          <div>
-            Hello {`Last Updated Rate ${this.getCurrentTime()}`}
+          <div className="infoBox">
+            <ul className="infoList">
+              <li>Most Recent: <span className="accentText">{this.props.USD.last}</span> USD</li>
+              <li>Buy: <span className="accentText">{this.props.USD.buy}</span> USD</li>
+              <li>Sell: <span className="accentText">{this.props.USD.sell}</span> USD</li>
+            </ul>
           </div>
         </div>
       </div>
