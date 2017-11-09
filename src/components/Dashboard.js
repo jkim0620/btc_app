@@ -19,11 +19,6 @@ class Dashboard extends Component {
     // parameter: getExchangeRates() -> an action, which is an axios call that fetches data from the api, is passed in as a parameter for the dispatch Function
     // interval: 900000 -> Update data every 15min
     this.setIntervalDataFetch(this.props.dispatch, getExchangeRates(), 900000);
-    console.log(this.props);
-    console.log(Object.keys(this.props));
-    this.setState({
-      data: this.props.USD.last
-    })
   }
 
     // Function to get current time
@@ -33,7 +28,7 @@ class Dashboard extends Component {
       let date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
       let time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
 
-      let suffix = ( time[0] < 12 ) ? "AM" : "PM";
+      let suffix = ( time[0] < 12 ) ? 'AM' : 'PM';
 
       time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
 
@@ -41,10 +36,10 @@ class Dashboard extends Component {
 
       for (let i = 1; i < 3; i++) {
         if (time[i] < 10) {
-          time[i] = "0" + time[i];
+          time[i] = '0' + time[i];
         }
       }
-      return `${time.join(":")} ${suffix} ${date.join("/")}`;
+      return `${time.join(':')} ${suffix} ${date.join('/')}`;
     }
 
   getChartData(data) {
