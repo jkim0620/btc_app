@@ -5,18 +5,38 @@
 }
 
 .infoBox {
-  background-color: #8db7b5;
-  width: 360px;
+  background-color: #b1d4e5;
+  width: 80%;
+  height: 60px;
   margin: 50px 20px;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
+  clear: left;
 }
 
 .infoList {
   li {
+    font-size: 12px;
     font-weight: bold;
     color: $gray;
     margin-right: 20px;
     margin-bottom: 10px;
+    float: left;
+    border-left: 7px solid #074b7c;
+    padding-left: 10px;
+    padding-right: 25px;
+  }
+}
+
+// Media Query for tablet or smaller
+@media screen and (max-width: 1100px) {
+  .infoBox {
+    height: auto;
+  }
+
+  .infoList {
+    li {
+      float: none;
+    }
   }
 }

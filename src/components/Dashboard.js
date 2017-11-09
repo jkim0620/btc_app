@@ -54,12 +54,12 @@ class Dashboard extends Component {
           {
             label: ['Buying Rate'],
             data: [data.buy],
-            backgroundColor: '#89F8EA',
+            backgroundColor: '#03aee6',
           },
           {
             label: ['Selling Rate'],
             data: [data.sell],
-            backgroundColor: '#d16545',
+            backgroundColor: '#2754ba',
           },
         ],
       }
@@ -69,32 +69,35 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <header>
-          <nav>
-            <div className="logoBox">
-              <p className="logo">Blockchain</p>
+        <section>
+          <header>
+            <nav>
+              <a className="logoBox" href="https://www.blockchain.com/" target="_blank">
+                <img className="logo_img" src="http://p4.zdassets.com/hc/settings_assets/224702/200064236/x1O2UCl7WFPxd3wRNKJoyQ-favicon-blockchain.png" />
+                <p className="logo">Blockchain</p>
+              </a>
+              <div className="dataBox">
+                <p className="dataText">
+                  $ <span className="accentText">{this.props.USD.last}</span> USD
+                  <br />
+                  {`Last Updated: ${this.getCurrentTime()}`}
+                </p>
+              </div>
+            </nav>
+          </header>
+          <div className="chartContainer">
+            <Chart
+            chartData={this.getChartData(this.props.USD)}
+            />
+            <div className="infoBox">
+              <ul className="infoList">
+                <li> Current Market Price: <span className="accentText">{this.props.USD.last}</span> USD</li>
+                <li> Buy: <span className="accentText">{this.props.USD.buy}</span> USD</li>
+                <li> Sell: <span className="accentText">{this.props.USD.sell}</span> USD</li>
+              </ul>
             </div>
-            <div className="dataBox">
-              <p className="dataText">
-                $ <span className="accentText">{this.props.USD.last}</span> USD
-                <br />
-                {`Last Updated: ${this.getCurrentTime()}`}
-              </p>
-            </div>
-          </nav>
-        </header>
-        <div className="chartContainer">
-          <Chart
-          chartData={this.getChartData(this.props.USD)}
-          />
-          <div className="infoBox">
-            <ul className="infoList">
-              <li>Current Market Price: <span className="accentText">{this.props.USD.last}</span> USD</li>
-              <li>Buy: <span className="accentText">{this.props.USD.buy}</span> USD</li>
-              <li>Sell: <span className="accentText">{this.props.USD.sell}</span> USD</li>
-            </ul>
           </div>
-        </div>
+        </section>
         <footer>
           <div>
             <a href="https://github.com/jkim0620/btc_app"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a> Julia Kim

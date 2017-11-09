@@ -18,17 +18,17 @@ const Chart = (props) => {
     elements: {
       rectangle: {
         borderWidth: 7,
-        borderColor: '#818e9b',
+        borderColor: '#5b7d8e',
         borderSkipped: 'top'
       },
     },
-    title: {
-      display: true,
-      text: 'Get the latest Bitcoin Exchange Rates every 15min',
-      fontFamily: 'Avenir',
-      fontSize: 18,
-      fontColor: '#232323',
-    },
+    // title: {
+    //   display: true,
+    //   text: 'Get the latest Bitcoin Exchange Rates every 15min',
+    //   fontFamily: 'Avenir',
+    //   fontSize: 18,
+    //   fontColor: '#232323',
+    // },
     legend: {
       display: true,
       position: 'right',

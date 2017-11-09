@@ -7,8 +7,12 @@ body {
   font-family: "Avenir", "Helvetica", "sans-serif";
   padding: 0;
   margin: 0;
-  background: #34495e;
-  width: 100%; }
+  background: #799eb2;
+  width: 100%;
+  height: 100%; }
+
+section {
+  min-height: calc(100vh - 90px); }
 
 ul {
   list-style: none;
@@ -25,27 +29,35 @@ a:visited {
 
 .accentText {
   color: #d16545;
-  font-size: 16px; }
+  font-size: 14px; }
 
 header {
-  height: 70px;
-  background-color: #89F8EA;
+  height: 80px;
+  background-color: #074b7c;
   margin-bottom: 20px;
-  padding: 20px 70px;
-  color: #34495e; }
+  padding: 15px 70px;
+  color: #0c233d; }
 
 nav {
   display: flex;
   justify-content: space-between; }
+
+img {
+  width: 50px;
+  height: 50px; }
 
 .logoBox {
   flex: 1; }
   .logoBox .logo {
     margin: 0;
     width: 90px;
-    border-bottom: #34495e 5px solid;
     font-size: 18px;
-    font-weight: bold; }
+    font-weight: bold;
+    float: left;
+    padding-top: 15px;
+    margin-left: 10px; }
+  .logoBox .logo_img {
+    float: left; }
 
 .dataBox {
   flex: 1;
@@ -61,24 +73,39 @@ nav {
   font-family: "Avenir"; }
 
 .infoBox {
-  background-color: #8db7b5;
-  width: 360px;
+  background-color: #b1d4e5;
+  width: 80%;
+  height: 60px;
   margin: 50px 20px;
-  padding: 30px;
-  border-radius: 10px; }
+  padding: 20px;
+  border-radius: 10px;
+  clear: left; }
 
 .infoList li {
+  font-size: 12px;
   font-weight: bold;
   color: #232323;
   margin-right: 20px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  float: left;
+  border-left: 7px solid #074b7c;
+  padding-left: 10px;
+  padding-right: 25px; }
 
+@media screen and (max-width: 1100px) {
+  .infoBox {
+    height: auto; }
+
+  .infoList li {
+    float: none; } }
 footer {
-  background: #1e242b;
+  background: #5b7d8e;
   width: 100%;
   height: 70px;
   padding: 20px;
-  margin-top: 100px;
-  text-align: center; }
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */
