@@ -42,10 +42,6 @@ nav {
   display: flex;
   justify-content: space-between; }
 
-img {
-  width: 50px;
-  height: 50px; }
-
 .logoBox {
   flex: 1; }
   .logoBox .logo {
@@ -54,10 +50,12 @@ img {
     font-size: 18px;
     font-weight: bold;
     float: left;
-    padding-top: 15px;
+    padding-top: 10px;
     margin-left: 10px; }
   .logoBox .logo_img {
-    float: left; }
+    float: left;
+    width: 40px;
+    height: 40px; }
 
 .dataBox {
   flex: 1;
