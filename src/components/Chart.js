@@ -24,10 +24,10 @@ const Chart = (props) => {
     },
     title: {
       display: true,
-      text: 'Get the latest Bitcoin Exchange Rates',
+      text: 'Get the latest Bitcoin Exchange Rates every 15min',
       fontFamily: 'Avenir',
       fontSize: 18,
-      fontColor: '#fff',
+      fontColor: '#232323',
     },
     legend: {
       display: true,

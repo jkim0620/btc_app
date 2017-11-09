@@ -19,15 +19,12 @@ class Dashboard extends Component {
     // parameter: getExchangeRates() -> an action, which is an axios call that fetches data from the api, is passed in as a parameter for the dispatch Function
     // interval: 900000 -> Update data every 15min
     this.setIntervalDataFetch(this.props.dispatch, getExchangeRates(), 900000);
-    // const canvas = this.refs.bargraph.chart_instance;
-    // console.log(canvas);
+    console.log(this.props);
+    console.log(Object.keys(this.props));
+    this.setState({
+      data: this.props.USD.last
+    })
   }
-
-  // saveDataToLocalStorage() {
-  //   store.subscribe(() => {
-  //     localStorage.setItem('reduxState', JSON.stringify(store.getState()))
-  //   })
-  // }
 
     // Function to get current time
     // Reference code: https://gist.github.com/hurjas/2660489
@@ -53,7 +50,6 @@ class Dashboard extends Component {
   getChartData(data) {
     return (
       {
-        // labels: [`Most Recent Market Price`, `Buying Rate`, `Selling Rate`],
         datasets: [
           {
             label: ['Most Recent Market Price'],
@@ -81,7 +77,7 @@ class Dashboard extends Component {
         <header>
           <nav>
             <div className="logoBox">
-              <p className="logo">blockchain</p>
+              <p className="logo">Blockchain</p>
             </div>
             <div className="dataBox">
               <p className="dataText">
@@ -98,12 +94,17 @@ class Dashboard extends Component {
           />
           <div className="infoBox">
             <ul className="infoList">
-              <li>Most Recent: <span className="accentText">{this.props.USD.last}</span> USD</li>
+              <li>Current Market Price: <span className="accentText">{this.props.USD.last}</span> USD</li>
               <li>Buy: <span className="accentText">{this.props.USD.buy}</span> USD</li>
               <li>Sell: <span className="accentText">{this.props.USD.sell}</span> USD</li>
             </ul>
           </div>
         </div>
+        <footer>
+          <div>
+            <a href="https://github.com/jkim0620/btc_app"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a> Julia Kim
+          </div>
+        </footer>
       </div>
     );
   }
