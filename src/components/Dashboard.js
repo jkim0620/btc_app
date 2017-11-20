@@ -86,6 +86,11 @@ class Dashboard extends Component {
             </nav>
           </header>
           <div className="chartContainer">
+            <select>
+              <option value="USD">USD</option>
+              <option value="KRW">KRW</option>
+              <option value="EUR">EUR</option>
+            </select>
             <Chart
             chartData={this.getChartData(this.props.USD)}
             />
